@@ -7,7 +7,6 @@
 
 //System Libraries
 #include <iostream>
-#include <iomanip>
 using namespace std;
 
 //User Libraries
@@ -27,30 +26,47 @@ int main(int argc, char** argv) {
     unsigned int minutes;//number of minutes
     unsigned int seconds;//number of seconds
     unsigned int nSecs;  //number of seconds inputted by user
+    bool doAgain;
     
-    cin>>nSecs;
-    
-    seconds=nSecs%60;
-    nSecs/=60;
-    minutes=nSecs%60;
-    nSecs/=60;
-    hours=nSecs%24;
-    nSecs/=24;
-    days=nSecs%7;
-    nSecs/=7;
-    weeks=nSecs%4;
-    nSecs/=4;
-    months=nSecs%12;
-    years=nSecs/12;
-    
-    cout<<years<<endl;
-    cout<<months<<endl;
-    cout<<weeks<<endl;
-    cout<<days<<endl;
-    cout<<hours<<endl;
-    cout<<minutes<<endl;
-    cout<<seconds<<endl;
-    
+    do{
+        unsigned char response;
+        
+        //prompt user input in seconds
+        cout<<"enter the amount of seconds you want to convert?"<<endl;
+        cin>>nSecs;
+
+        //calculating the conversion
+        seconds=nSecs%60;  //seconds remaining
+        nSecs/=60;
+        minutes=nSecs%60;  //minutes remaining
+        nSecs/=60;
+        hours=nSecs%24;    //hours remaining
+        nSecs/=24;
+        days=nSecs%7;      //days remaining
+        nSecs/=7;
+        weeks=nSecs%4;     //weeks remaining
+        nSecs/=4;
+        months=nSecs%12;   //months remaining
+        years=nSecs/12;    //years
+
+        //output the results
+        cout<<"That converts to:"<<endl;
+        cout<<"Years     = "<<years<<endl;
+        cout<<"Months    = "<<months<<endl;
+        cout<<"Weeks     = "<<weeks<<endl;
+        cout<<"Days      = "<<days<<endl;
+        cout<<"Hours     = "<<hours<<endl;
+        cout<<"Minutes   = "<<minutes<<endl;
+        cout<<"Seconds   = "<<seconds<<endl;
+        cout<<endl;
+        cout<<"Would you like to convert more seconds? y/n"<<endl;
+        cin>>response;
+        cout<<endl;
+        
+        if(response=='y')doAgain=true;
+        else doAgain=false;
+        
+    }while(doAgain);
     
     return 0;
 }
