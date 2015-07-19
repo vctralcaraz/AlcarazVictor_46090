@@ -1,0 +1,6 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=0000003C
+eax=00000000 ebx=0028AC6C ecx=80000038 edx=00000000 esi=00000000 edi=61007200
+ebp=00000030 esp=0028AC50 program=C:\Users\rcc\Desktop\TwoDimensionalArray\dist\Debug\Cygwin_4.x-Windows\twodimensionalarray.exe, pid 4388, thread main
+cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
+Stack trace:
+Frame     Function  Args
