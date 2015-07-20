@@ -42,18 +42,39 @@ int main(int argc, char** argv) {
     for(int i=1;i<=game;i++){
     //do{
         int uTotal=0,  //card totals for user
-            dTotal=0;  //card totals for dealer
+            dTotal=0,  //card totals for dealer
+            dCard,     //dealer card
+            uCard;     //user card
         
         //number game
         cout<<endl<<"Game Number "<<i<<endl;
         
         //dealer card
         cout<<endl;
-        dTotal+=gtDCard();
+        dCard=gtDCard();
+        if(dCard==1){
+            if(dTotal>=11){
+                dTotal+=1;
+            }else{
+                dTotal+=11;
+            }
+        }else{
+                dTotal+=dCard;
+        }
     
         //loop to get card totals
         do{
-            uTotal+=gtUCard();
+            uCard=gtUCard();
+            if(uCard==1){
+                if(uTotal>=11){
+                    uTotal+=1;
+                }else{
+                    uTotal+=11;
+                }
+            }else{
+                uTotal+=uCard;
+            }
+            
             cout<<"Your Total   = "<<uTotal<<endl;
             cout<<"Dealer Total = "<<dTotal<<endl<<endl;
 
@@ -90,7 +111,16 @@ int main(int argc, char** argv) {
                 nxtCard=false;
             }else{
                 //dealer card totals
-                dTotal+=gtDCard();
+                dCard=gtDCard();
+                if(dCard==1){
+                        if(dTotal>=11){
+                                dTotal+=1;
+                        }else{
+                                dTotal+=11;
+                        }
+                }else{
+                        dTotal+=dCard;
+                }
                 cout<<"Your Total   = "<<uTotal<<endl;
                 cout<<"Dealer Total = "<<dTotal<<endl<<endl;
                 //dealer stays on 17-21
@@ -123,6 +153,7 @@ int main(int argc, char** argv) {
             dWins++;
         }else if(dTotal==uTotal){
             cout<<"Push"<<endl<<endl;
+            i--;
         }
         
         //display wins and losses
@@ -172,11 +203,7 @@ int gtDCard(){
     if(cNum==1){
         number = "Ace";
         cout<<"Dealer got an ace! That is a 1 or 11"<<endl;
-        if(faceVal<11){
-            faceVal=11;
-        }else {
-            faceVal=1;
-        }
+        faceVal=1;
     }else if(cNum==2){
         number = "Two";
         faceVal=2;
@@ -215,7 +242,11 @@ int gtDCard(){
         faceVal=10;
     }
     cout<<"Dealer card:"<<endl;
-    cout<<number<<" of "<<suit<<" = "<<faceVal<<endl<<endl;
+    if(faceVal==1){
+        cout<<number<<" of "<<suit<<" = 1 or 11"<<endl<<endl;
+    }else{
+        cout<<number<<" of "<<suit<<" = "<<faceVal<<endl<<endl;
+    }
     return faceVal;
 }
 
@@ -251,11 +282,7 @@ int gtUCard(){
     if(cNum==1){
         number = "Ace";
         cout<<"You got an ace! That is a 1 or 11"<<endl;
-        if(faceVal<11){
-            faceVal=11;
-        }else {
-            faceVal=1;
-        }
+        faceVal=1;
     }else if(cNum==2){
         number = "Two";
         faceVal=2;
@@ -295,6 +322,10 @@ int gtUCard(){
     }
     
     cout<<"Your Card: "<<endl;
-    cout<<number<<" of "<<suit<<" = "<<faceVal<<endl<<endl;
+    if(faceVal==1){
+        cout<<number<<" of "<<suit<<" = 1 or 11"<<endl<<endl;
+    }else{
+        cout<<number<<" of "<<suit<<" = "<<faceVal<<endl<<endl;
+    }
     return faceVal;
 }
