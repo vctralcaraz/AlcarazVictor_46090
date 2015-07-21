@@ -1,8 +1,8 @@
 /* 
  * File:   main.cpp
  * Author: Victor Alcaraz
- * Created on July 19, 2015, 11:25 AM
- * Purpose: To Play BlackJack against the CPU
+ * Created on July 20, 2015, 6:49 PM
+ * Purpose: Play Black Jack
  */
 
 //System Libraries
@@ -40,7 +40,6 @@ int main(int argc, char** argv) {
     
     //complete games play again?
     for(int i=1;i<=game;i++){
-    //do{
         int uTotal=0,  //card totals for user
             dTotal=0,  //card totals for dealer
             dCard,     //dealer card
@@ -118,7 +117,7 @@ int main(int argc, char** argv) {
                         }else{
                                 dTotal+=11;
                         }
-                }else{
+                }else{ 
                         dTotal+=dCard;
                 }
                 cout<<"Your Total   = "<<uTotal<<endl;
@@ -166,7 +165,7 @@ int main(int argc, char** argv) {
         cout<<"Press any letter to continue"<<endl;
         cin>>uChoice;
     }
-    cout<<"fix"<<endl;
+    
     //Exit Stage Right!
     return 0;
 }
