@@ -18,8 +18,6 @@ using namespace std;
 //Function Prototypes
 int gtUCard(string [],string []);
 int gtDCard(string [],string []);
-int betting();
-int start(int,int);
 
 //Execution Begins Here!
 int main(int argc, char** argv) {
@@ -31,14 +29,16 @@ int main(int argc, char** argv) {
     int  uWins=0,   //Player wins total
          dWins=0,   //Dealer wins total
          game,      //number of games
-         minBet=25, //minimum bet for the table
-         money=1000;//user money
+         minBet=25; //minimum bet for the table
+    unsigned int money=1000;//user money
     
     //initialize array of card faces and array of suits
     const int SUITS=4,  //number of suits in a deck of cards
-              FACES=13; //number of faces in a deck of cards
+              FACES=13, //number of faces in a deck of cards
+              CARD=52;  //number of cards per player hand
     string suit[SUITS]={"H","S","D","C"},
-           face[FACES]={"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
+           face[CARD]={"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
+    int values[CARD]={1,2,3,4,5,6,7,8,9,10};
     
     //set random number seed
     srand(time(0));
@@ -64,7 +64,7 @@ int main(int argc, char** argv) {
         cout<<endl;
         if(bet<25) cout<<"Minimum bet is $"<<minBet<<endl;
         if(bet>money) cout<<"You can't bet more than what you have"<<endl;
-        }while(bet<25 && bet>money);
+        }while(bet<25 || bet>money);
         money-=bet;
         cout<<endl;
 
@@ -187,8 +187,8 @@ int main(int argc, char** argv) {
         cin.ignore();
     }while(money>minBet);
     
-    cout<<"You are out of funds."<<endl;
-    cout<<"Thanks for playing!"<<endl;
+    cout<<"Thanks for your contribution to the casino."<<endl;
+    cout<<"Have a great day!"<<endl;
     
     //Exit Stage Right!
     return 0;
